@@ -111,8 +111,8 @@ def run_knn_benchmark(checkout, values):
   # doc_vectors = '%s/data/enwiki-20120502-lines-1k-minilm.vec' % constants.BASE_DIR
   # query_vectors = '%s/luceneutil/tasks/vector-task-minilm.vec' % constants.BASE_DIR
   dim = 300
-  doc_vectors = "/local/home/kaivalnp/workplace/lucene_bench/util/tasks/enwiki-20120502-lines-1k-300d.vec"
-  query_vectors = "/local/home/kaivalnp/workplace/lucene_bench/util/tasks/vector-task-300d.vec"
+  doc_vectors = f"{constants.BASE_DIR}/luceneutil/tasks/enwiki-20120502-lines-1k-300d.vec"
+  query_vectors = f"{constants.BASE_DIR}/luceneutil/tasks/vector-task-300d.vec"
 
   # dim = 256
   # doc_vectors = '/d/electronics_asin_emb.bin'
@@ -126,9 +126,9 @@ def run_knn_benchmark(checkout, values):
   # query_vectors = f"/lucenedata/enwiki/{'cohere-wikipedia'}-queries-{dim}d.vec"
   # parentJoin_meta_file = f"{constants.BASE_DIR}/data/{'cohere-wikipedia'}-metadata.csv"
 
-  jfr_output = f'/local/home/kaivalnp/workplace/lucene_bench/util/logs/knn-perf-test.jfr'
+  jfr_output = f"{constants.BASE_DIR}/logs/knn-perf-test.jfr"
 
-  cp = benchUtil.classPathToString(benchUtil.getClassPath(checkout) + (f"{constants.BENCH_BASE_DIR}/build",))
+  cp = benchUtil.classPathToString(benchUtil.getClassPath(checkout) + (f"{constants.BENCH_BASE_DIR}/build","/home/puneet/.m2/repository/com/nvidia/cuvs/cuvs-java/25.02.0/cuvs-java-25.02.0.jar",))
   cmd = constants.JAVA_EXE.split(" ") + [
     "-cp",
     cp,
