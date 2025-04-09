@@ -79,7 +79,8 @@ import org.apache.lucene.queries.function.valuesource.ConstKnnByteVectorValueSou
 import org.apache.lucene.queries.function.valuesource.ConstKnnFloatValueSource;
 import org.apache.lucene.queries.function.valuesource.FloatKnnVectorFieldSource;
 import org.apache.lucene.queries.function.valuesource.FloatVectorSimilarityFunction;
-import org.apache.lucene.sandbox.codecs.faiss.FaissKnnVectorsFormat;
+//import org.apache.lucene.sandbox.codecs.faiss.FaissKnnVectorsFormat;
+import org.apache.lucene.sandbox.vectorsearch.CuVSCodec;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.ConstantScoreScorer;
@@ -1185,7 +1186,7 @@ public class KnnGraphTester {
   }
 
   static Codec getCodec(int maxConn, int beamWidth, ExecutorService exec, int numMergeWorker, boolean quantize, int quantizeBits, boolean quantizeCompress) {
-    return new Lucene101Codec() {
+   /* return new Lucene101Codec() {
       @Override
       public KnnVectorsFormat getKnnVectorsFormatForField(String field) {
         return new FaissKnnVectorsFormat(
@@ -1194,7 +1195,8 @@ public class KnnGraphTester {
             String.format(Locale.ROOT, "efConstruction=%d,efSearch=%d", beamWidth, 150)
         );
       }
-    };
+    };*/
+    return new CuVSCodec();
   }
 
 //  static Codec getCodec(int maxConn, int beamWidth, ExecutorService exec, int numMergeWorker, boolean quantize, int quantizeBits, boolean quantizeCompress) {

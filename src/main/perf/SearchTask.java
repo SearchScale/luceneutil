@@ -33,9 +33,9 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.ReaderUtil;
 import org.apache.lucene.index.StoredFields;
 import org.apache.lucene.index.FloatVectorValues;
-import org.apache.lucene.sandbox.facet.utils.FacetBuilder;
-import org.apache.lucene.sandbox.facet.utils.FacetOrchestrator;
-import org.apache.lucene.sandbox.facet.utils.TaxonomyFacetBuilder;
+//import org.apache.lucene.sandbox.facet.utils.FacetBuilder;
+//import org.apache.lucene.sandbox.facet.utils.FacetOrchestrator;
+//import org.apache.lucene.sandbox.facet.utils.TaxonomyFacetBuilder;
 import org.apache.lucene.search.Collector;
 import org.apache.lucene.search.FieldDoc;
 import org.apache.lucene.search.IndexSearcher;
@@ -242,7 +242,7 @@ final class SearchTask extends Task {
             // TODO: sandbox facet module doesn't currently have methods to aggregate for all docs in the index.
             //       if we see regression because of that, there might be something we can optimize in searcher/scorer
             //       for MatchAllDocsQuery to make collection for all docs in the index faster?
-            FacetOrchestrator facetOrchestrator = new FacetOrchestrator();
+            /*FacetOrchestrator facetOrchestrator = new FacetOrchestrator();
             List<FacetBuilder> facetBuilders = new ArrayList<>();
             for (TaskParser.TaskBuilder.FacetTask request : duringCollectionFacetTasks) {
               // TODO: handle other types, not just taxonomy
@@ -270,7 +270,7 @@ final class SearchTask extends Task {
                 result = null;
               }
               facetResults.add(result);
-            }
+            }*/
           }
           if (postCollectionFacetTasks.isEmpty() == false) {
             if (q instanceof MatchAllDocsQuery) {

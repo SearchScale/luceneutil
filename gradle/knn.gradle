@@ -22,7 +22,7 @@ def highDimDataSets = [
 ]
 
 
-def luceneDir = "/home/kaivalnp/workplace/open-lucene/lucene"
+def luceneDir = "../lucene_candidate"
 // def luceneDir = "/l/trunk/lucene"
 def luceneVersion = (String) findProperty("lucene.version")
 // def luceneVersion = "11.0.0"
