@@ -915,13 +915,13 @@ public class KnnGraphTester {
       TopDocs topDocs = searcher.search(parentJoinQuery, k);
       return new Result(topDocs, 0, 0);
     }
-    ProfiledKnnFloatVectorQuery profiledQuery = new ProfiledKnnFloatVectorQuery(field, vector, k, fanout, prefilter ? filter : null);
-    Query query = prefilter ? profiledQuery : new BooleanQuery.Builder()
-            .add(profiledQuery, BooleanClause.Occur.MUST)
-            .add(filter, BooleanClause.Occur.FILTER)
-            .build();
+    CuVSKnnFloatVectorQuery cuvsQuery = new CuVSKnnFloatVectorQuery(field, vector, k, k, 32);
+    Query query = prefilter ? cuvsQuery : new BooleanQuery.Builder()
+         .add(cuvsQuery, BooleanClause.Occur.MUST)
+         .add(filter, BooleanClause.Occur.FILTER)
+         .build();
     TopDocs docs = searcher.search(query, k);
-    return new Result(docs, profiledQuery.totalVectorCount(), 0);
+    return new Result(docs,0, 0);
   }
 
   record Result(TopDocs topDocs, long visitedCount, int reentryCount) {
